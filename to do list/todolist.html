@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+        <style media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                letter-spacing: 1px;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                text-transform: capitalize;
+            }
+            body{
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(45deg,rgb(247, 116, 203) 50%,#333);
+            }
+            .container{
+                height: 450px;
+                width: 330px;
+                background: rgb(56, 124, 156);
+                border-radius: 5px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+                padding: 10px;
+                overflow-y: auto;
+            }
+            #input{
+                height: 50px;
+                width: 100%;
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                background: #666;
+                color: #fff;
+                padding: 0 10px;
+                margin: 150px 0;
+            }
+            #input::placeholder{
+                color: #bbb;
+            }
+            ul li{
+                background:#eee;
+                color: #333;
+                height: 40px;
+                border-radius: 50px;
+                margin: 10px 0;
+                padding: 10px;
+                position: relative;
+            }
+            ul .fa-check, .fa-trash{
+                position:absolute;
+                cursor: pointer;
+            }
+            ul .fa-check{
+                right: 40px;
+                color: green;
+            }
+            ul .fa-trash{
+                right: 15px;
+                color: rgb(192, 36, 36);
+            }
+            ul .checked{
+                background: pink;
+                text-decoration: line-through;
+                transition: .2s;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="container">
+            <input type="text" id="input" placeholder="press enter to add task">
+            <ul></ul>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#input').change(function(){
+                     var input = $(this).val();
+                     $('ul').append('<li>'+ input +'<i class="fas fa-check"></i> <i class="fas fa-trash"></i>')
+                });
+                $('ul').on('click','.fa-trash',function(){
+                    $(this).parent('li').fadeOut(280);
+                });
+                 $('ul').on('click','.fa-check',function(){
+                    $(this).parent('li').toggleClass('checked');
+                });
+                }
+            );
+        </script>
+    </body>
+</html>
